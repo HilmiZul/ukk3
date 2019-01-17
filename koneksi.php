@@ -1,2 +1,2 @@
 <?php
-$conn = mysqli_connect("127.0.0.1", "zulx", "ranger99", "ukk_paket_3");
+$conn = mysqli_connect("localhost", "root", "", "db_sarpras");

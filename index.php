@@ -51,14 +51,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <?php
+                include('koneksi.php');
+                $q = mysqli_query($conn, "select a.*, b.*, c.*, d.* from detil_pinjam a
+                                          inner join peminjaman b on a.id_peminjaman=b.id_peminjaman
+                                          inner join inventaris c on a.id_inventaris=c.id_inventaris
+                                          inner join pegawai d on b.id_pegawai=d.id_pegawai");
+                $no=0;
+                while ($r = mysqli_fetch_array($q)) {
+                  $no++;?>
+                  <tr>
+                    <td><?php print $no;?></td>
+                    <td><?php print $r['nama_pegawai'];?></td>
+                    <td><?php print $r['tanggal_pinjam'];?></td>
+                    <td><?php print $r['nama'];?></td>
+                    <td><?php print $r['status_peminjaman'];?></td>
+                    <td><a href="#" class="btn btn-danger">hapus</a></td>
+                  </tr>
+                <?php } ?>
+                <!-- <tr>
                   <td>1.</td>
                   <td>Zul Hilmi</td>
                   <td>17.1.2019</td>
                   <td>Obeng</td>
                   <td><span class="badge badge-danger">Pinjam</span></td>
                   <td><a href="#" class="btn btn-danger">hapus</a></td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
